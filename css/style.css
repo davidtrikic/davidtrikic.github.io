@@ -1,23 +1,18 @@
 .images-container {
   position: relative;
   height: 533px; 
-  width: 100%;
 }  
 .image {
   position: absolute;
   width: 100%;
-  height: auto;
   overflow:hidden;
-}
-.image-2-container {
-  left: 0;
 }
 .image img {
   object-fit: cover;
 }
 .image-slider {
   position: absolute;
-  z-index:9;
+  z-index: 9;
   cursor: ew-resize;
   width: 30px;
   height: 30px;
