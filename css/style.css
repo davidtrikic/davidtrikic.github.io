@@ -20,6 +20,35 @@
   opacity: 0.9;
   border-radius: 50%;
 }
+.image-slider_2 {
+  position: absolute;
+  z-index: 9;
+  cursor: ew-resize;
+  width: 6px;
+  height: 100px;
+  background-color: #fff;
+  opacity: 0.9;
+}
+.image-slider_2::after {
+  content: ">";
+  font-weight: 700;
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 40px;
+  left: 15px;
+}
+.image-slider_2::before {
+  content: "<";
+  font-weight: 700;
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 40px;
+  right: 15px;
+}
 .slider-border {
   border-right: 3px solid #fff;
 }

@@ -4,6 +4,7 @@ const imagesContainer = document.getElementById('images-container');
 const overlayDiv = document.getElementById('image-overlay');
 const overlayImg = document.getElementById('overlay-img');
 const img_base = document.getElementById('image_1');
+const sliderButton = document.getElementById('slider-button');
 
 let border = 8;
 let pos = 0;
@@ -18,11 +19,11 @@ function compareImages(imgDiv) {
 
   // Set the width of overlay image to match the container width on window resize
   window.addEventListener('resize', function() {
-    overlayImg.style.width = imagesContainer.offsetWidth  - border + "px";
+    overlayImg.style.width = imagesContainer.offsetWidth - border + "px";
 
     if (pos > imagesContainer.offsetWidth) {
       imgSlider.style.left = imagesContainer.offsetWidth - (imgSlider.offsetWidth / 2) + "px";
-      overlayDiv.style.width = imagesContainer.offsetWidth - border + "px"
+      overlayDiv.style.width = imagesContainer.offsetWidth - border + "px";
   }});
 
   var imgSlider, imgDiv, isClicked = 0, imgDiv_width, imgDiv_height;
@@ -33,6 +34,7 @@ function compareImages(imgDiv) {
   imgDiv.style.width = (imgDiv_width / 2) + "px";
   // Create slider
   imgSlider = document.createElement("div");
+////////
   imgSlider.setAttribute("class", "image-slider");
   // Insert slider
   imgDiv.parentElement.insertBefore(imgSlider, imgDiv);
@@ -47,7 +49,21 @@ function compareImages(imgDiv) {
   imgSlider.addEventListener("touchstart", sliderStart);
   // Deactivate slider on touch screens
   window.addEventListener("touchend", sliderStop);
-  
+
+  sliderButton.addEventListener("click", switchSlider);
+
+  function switchSlider() {
+    if (imgSlider.classList.contains('image-slider')) {
+      imgSlider.classList.remove('image-slider');
+      imgSlider.classList.add('image-slider_2');
+    } else {
+      imgSlider.classList.remove('image-slider_2');
+      imgSlider.classList.add('image-slider');
+    }
+    imgSlider.style.top = (imgDiv_height / 2) - (imgSlider.offsetHeight / 2) + "px";
+    imgSlider.style.left = imgDiv.offsetWidth - (imgSlider.offsetWidth / 2 + 2) + "px";
+  }
+
   function sliderStart(e) {
     // Prevent any actions on a apge while slider is active
     e.preventDefault();
@@ -110,7 +126,7 @@ function compareImages(imgDiv) {
     // Resize the overlay div
     imgDiv.style.width = x + "px";
     // Set the slider control position one the edge of the overlay image
-    imgSlider.style.left = imgDiv.offsetWidth - (imgSlider.offsetWidth / 2) + "px";
+    imgSlider.style.left = imgDiv.offsetWidth - (imgSlider.offsetWidth / 2 + 2) + "px";
   }
 };
 
@@ -164,8 +180,8 @@ button_2.addEventListener('change', function(){
 const borderButton = document.getElementById('border-button');
 
 borderButton.addEventListener('click', function() {
-  console.log('asdf');
   overlayDiv.classList.toggle('slider-border');
+  
   changeLabel();
 });
 
@@ -178,4 +194,14 @@ function changeLabel() {
 }
 
 // Reset button
-document.getElementById('reset').addEventListener('click', function(){ location.reload();});
+document.getElementById('reset').addEventListener('click', function(){ 
+  overlayDiv.style.width = (imagesContainer.offsetWidth / 2) + "px";
+  let slider = document.getElementsByClassName('position')[0];
+  slider.style.left = (imagesContainer.offsetWidth / 2) - (slider.offsetWidth / 2) + "px";
+});
+
+// Slider switch button 
+
+// function sliderSwitch(slider) {
+
+// }
