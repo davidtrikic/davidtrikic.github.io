@@ -35,7 +35,7 @@ function compareImages(imgDiv) {
   // Create slider
   imgSlider = document.createElement("div");
 ////////
-  imgSlider.setAttribute("class", "image-slider");
+  imgSlider.setAttribute("class", "image-slider slider-position");
   // Insert slider
   imgDiv.parentElement.insertBefore(imgSlider, imgDiv);
   // Position the slider
@@ -196,12 +196,6 @@ function changeLabel() {
 // Reset button
 document.getElementById('reset').addEventListener('click', function(){ 
   overlayDiv.style.width = (imagesContainer.offsetWidth / 2) + "px";
-  let slider = document.getElementsByClassName('position')[0];
+  let slider = document.getElementsByClassName('slider-position')[0];
   slider.style.left = (imagesContainer.offsetWidth / 2) - (slider.offsetWidth / 2) + "px";
 });
-
-// Slider switch button 
-
-// function sliderSwitch(slider) {
-
-// }
